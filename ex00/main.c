@@ -68,6 +68,7 @@ int	main(int argc, char **argv)
 		return (err_manager());
 	clues = parsing(argv[1], x);
 	grid = init_grid(x);
+	prepose(grid, clues, x);
 	if (ft_solver_from_pos(pos, grid, clues, x) == 0)
 		disp_grid(grid, x);
 	else if (ft_solver_from_pos(pos, grid, clues, x) == 1)

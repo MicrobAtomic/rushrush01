@@ -21,20 +21,17 @@ int	count_visible_from_top(int pos, int **grid, int *clues, int x)
 	visible = 0;
 	max_h = 0;
 	i = 0;
-	if ((pos / x) == (x - 1))
+	while (i < x)
 	{
-		while (i < x)
+		if (grid[i][pos % x] > max_h)
 		{
-			if (grid[i][pos % x] > max_h)
-			{
-				visible++;
-				max_h = grid[i][pos % x];
-			}
-			i++;
+			visible++;
+			max_h = grid[i][pos % x];
 		}
-		if (visible != clues[pos % x])
-			return (1);
+		i++;
 	}
+	if (visible > clues[pos % x])
+		return (1);
 	return (0);
 }
 
@@ -47,20 +44,17 @@ int	count_visible_from_bottom(int pos, int **grid, int *clues, int x)
 	visible = 0;
 	max_h = 0;
 	i = x - 1;
-	if ((pos / x) == (x - 1))
+	while (i >= 0)
 	{
-		while (i >= 0)
+		if (grid[i][pos % x] > max_h)
 		{
-			if (grid[i][pos % x] > max_h)
-			{
-				visible++;
-				max_h = grid[i][pos % x];
-			}
-			i--;
+			visible++;
+			max_h = grid[i][pos % x];
 		}
-		if (visible != clues[(pos % x) + x])
-			return (1);
+		i--;
 	}
+	if (visible > clues[(pos % x) + x])
+		return (1);
 	return (0);
 }
 

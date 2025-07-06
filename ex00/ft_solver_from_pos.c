@@ -40,26 +40,24 @@ void	prepose(int **grid, int *clues, int x)
 	i = 0;
 	while (i < x)
 	{
-		if (clues[i] == x && is_valid(grid, i, 1, x))
+		if (clues[i] == x && !is_valid(grid, i, 1, x))
 			grid[0][i] = 1;
-		if (clues[i] == 1 && is_valid(grid, i, x, x))
+		if (clues[i] == 1 && !is_valid(grid, i, x, x))
 			grid[0][i] = x;
-		if (clues[i + x] == x && is_valid(grid, x - 1 + i, 1, x))
+		if (clues[i + x] == x && !is_valid(grid, x - 1 + i, 1, x))
 			grid[x - 1][i] = 1;
-		if (clues[i + x] == 1 && is_valid(grid, x - 1 + i, x, x))
+		if (clues[i + x] == 1 && !is_valid(grid, x - 1 + i, x, x))
 			grid[x - 1][i] = x;
-		if (clues[i + (x * 2)] == x && is_valid(grid, i * x, 1, x))
+		if (clues[i + (x * 2)] == x && !is_valid(grid, i * x, 1, x))
 			grid[i][0] = 1;
-		if (clues[i + (x * 2)] == 1 && is_valid(grid, i * x, x, x))
+		if (clues[i + (x * 2)] == 1 && !is_valid(grid, i * x, x, x))
 			grid[i][0] = x;
-		if (clues[i + (x * 3)] == x && is_valid(grid, (i * x) + x - 1, 1, x))
+		if (clues[i + (x * 3)] == x && !is_valid(grid, (i * x) + x - 1, 1, x))
 			grid[i][x - 1] = 1;
-		if (clues[i + (x * 3)] == 1 && is_valid(grid, (i * x) + x - 1, x, x))
-			grid[i][x - 1] = x;			
+		if (clues[i + (x * 3)] == 1 && !is_valid(grid, (i * x) + x - 1, x, x))
+			grid[i][x - 1] = x;
 		i++;
 	}
-	disp_grid(grid, x);
-	printf("\n");
 }
 
 int	ft_solver_from_pos(int pos, int **grid, int *clues, int x)
@@ -68,9 +66,6 @@ int	ft_solver_from_pos(int pos, int **grid, int *clues, int x)
 	int	col;
 	int	val;
 
-	prepose(grid, clues, x);
-	//disp_grid(grid, x);
-	//printf("\n");
 	if (pos == x * x)
 		return (0);
 	row = pos / x;

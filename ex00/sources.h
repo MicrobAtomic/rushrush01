@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+void	prepose(int **grid, int *clues, int x);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
 int		err_manager(void);
